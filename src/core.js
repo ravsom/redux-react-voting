@@ -36,9 +36,5 @@ export const next = (state)=> {
 };
 
 export const setEntries = (state, entries)=> {
-
-	console.log(entries);
-	const nextState = state.set('entries', entries);
-	console.log(nextState);
-	return nextState;
+	return state.set('entries', entries);
 };
