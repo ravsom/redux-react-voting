@@ -2,7 +2,7 @@
  * Created by rs on 25/07/16.
  */
 
-import {fromJS, Map} from 'immutable'
+import {fromJS, Map, List} from 'immutable'
 import {expect} from 'chai'
 
 import {reducer} from '../src/reducer'
@@ -12,7 +12,7 @@ describe('reducer', ()=> {
 	it('handles SET_ENTRIES', ()=> {
 		const initialState = Map();
 
-		const action = {type: 'SET_ENTRIES', entries: ['Lagaan', 'Dil']};
+		const action = {type: 'SET_ENTRIES', entries: List.of('Lagaan', 'Dil')};
 		const nextState = reducer(initialState, action);
 
 		expect(nextState).to.equal(fromJS({entries: ['Lagaan', 'Dil']}));
