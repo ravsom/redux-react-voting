@@ -4,6 +4,8 @@
 
 import {Map} from 'immutable';
 
+export const INITIAL_STATE = Map();
+
 export const vote = (state, entry)=> {
 	return state.updateIn(['vote', 'tally', entry], 0, tally=>tally + 1);
 };

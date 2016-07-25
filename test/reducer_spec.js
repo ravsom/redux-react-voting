@@ -9,6 +9,28 @@ import {reducer} from '../src/reducer'
 import {describe} from "mocha/lib/mocha";
 
 describe('reducer', ()=> {
+
+	it('chained reduce actions', ()=> {
+		const actions = [
+			{type: 'SET_ENTRIES', entries: List.of('Darr', 'Baazigar')},
+			{type: 'NEXT'},
+			{type: 'VOTE', entry: 'Darr'},
+			{type: 'VOTE', entry: 'Baazigar'},
+			{type: 'VOTE', entry: 'Darr'},
+			{type: 'NEXT'},
+		];
+
+		const nextState = actions.reduce(reducer, Map());
+
+		expect(nextState).to.equal(fromJS({winner: 'Darr'}));
+	});
+	it('has an initial state', ()=> {
+		const action = {type: 'SET_ENTRIES', entries: List.of('Lagaan', 'Dil')};
+
+		const nextState = reducer(undefined, action);
+
+		expect(nextState).to.equal(fromJS({entries: List.of('Lagaan', 'Dil')}));
+	});
 	it('handles SET_ENTRIES', ()=> {
 		const initialState = Map();
 
