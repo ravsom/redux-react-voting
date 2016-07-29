@@ -7,7 +7,7 @@ import {Map} from 'immutable';
 export const INITIAL_STATE = Map();
 
 export const vote = (state, entry)=> {
-	return state.updateIn(['vote', 'tally', entry], 0, tally=>tally + 1);
+	return state.updateIn(['tally', entry], 0, tally=>tally + 1);
 };
 
 const getWinners = (vote)=> {
@@ -38,5 +38,6 @@ export const next = (state)=> {
 };
 
 export const setEntries = (state, entries)=> {
+	console.log('State is : ' + state);
 	return state.set('entries', entries);
 };
